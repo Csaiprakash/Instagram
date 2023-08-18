@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <title>Instagram</title>
+</head>
+<body>
+    <style>
+        *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:10px 18%;
+    border-bottom:1px solid rgba(219,219,219,1);
+    background: white;
+    position:sticky;
+    top:0;
+}
+header .logo{
+    width:103px;
+    height:40px;
+}
+header .logo img{
+    width:100%;
+    height:100%;
+    object-fit: contain;
+}
+header .search{
+    width:250px;
+    background-color: rgba(239,239,239,1);
+    padding:3px 16px;
+    display: flex;
+    align-items: center;
+    border-radius:8px;
+}
+header .search input{
+    height:25px;
+    border:none;
+    outline:none;
+    background-color: rgba(239,239,239,1);
+    padding-left: 10px;
+    font-size: 15px;
+    color: #8e8e8e;
+}
+header nav ul{
+    list-style: none;
+    display: flex;
+}
+header nav ul li{
+    margin-right:20px;
+
+}
+header nav ul li:last-child{
+    margin-right:0;
+}
+header nav ul li a img{
+    width:22px;
+    height:22px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+header nav ul li a i{
+    font-size: 22px;
+    color:rgba(38,38,38,1)
+}
+
+section{
+    padding:30px 18%;
+    display: flex;
+    background-color: #fafafa;
+}
+.left{
+    width:60%;
+}
+.story{
+    display: flex;
+    padding:16px;
+    background-color: white;
+    border:1px solid rgba(219,219,219,1);
+}
+.story .stories{
+    width:17%;
+}
+.story .stories a img{
+    border-radius:50%;
+    border:3px solid #c62d8c;
+    padding:1px;
+}
+.story .stories p{
+    overflow: hidden;
+    width:90%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size:10px;
+}
+.post{
+    margin:25px 0;
+    background-color: white;
+    border:1px solid rgba(219,219,219,1);
+    border-radius: 3px;
+}
+.post .post-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:16px;
+}
+.post .post-title .post-left{
+    display: flex;
+    align-items: center;
+}
+.post .post-title .post-left .image img{
+    border-radius:50%;
+    object-fit:cover;
+}
+.post .post-title .post-left .image{
+    margin-right:15px;
+}
+.post .post-title .post-left .details .name{
+    padding-bottom:2px;
+    font-weight: bold;
+    font-size:20px;
+}
+.post .post-title .post-left .details .location{
+    font-size:10px;
+}
+.post .post-content img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+.post .post-footer{
+    display: flex;
+    justify-content: space-between;
+    padding:16px;
+}
+.post .post-footer .lsc{
+    font-size:22px;
+    margin-right:10px;
+}
+.post .post-footer .lsc i{
+    margin-left:5px;
+}
+.post .post-footer .save{
+    font-size: 22px;
+}
+.post .post-footer-content{
+    padding:0 16px 16px 16px;
+}
+.post .post-footer-content p{
+    margin-bottom:3px;
+}
+.post .post-footer-content .likes{
+    margin-bottom:7px;
+}
+.post .post-footer-content .name{
+    font-weight: bold;
+}
+.post .post-footer-content .name span{
+    margin-left:5px;
+    font-weight:normal;
+}
+.post .post-footer-content .comments{
+    font-size:15px;
+}
+.post .post-footer-content .post-time{
+    font-size:10px;
+    margin-top:5px;
+}
+.post .add-comment{
+    padding:16px;
+    border-top:1px solid #efefef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.post .add-comment .left{
+    display: flex;
+    align-items: center;
+}
+.post .add-comment .left i{
+    font-size:22px;
+    margin-right:15px;
+}
+.post .add-comment .left input{
+    width:100%;
+    border:none;
+    outline:none;
+    font-size:15px;
+}
+.right{
+    width:40%;
+    margin-top:15px;
+    position:fixed;
+    right:30px;
+}
+.right .profile-title{
+    display:flex;
+    align-items: center;
+}
+.right .profile-title .profile-left{
+    display: flex;
+    align-items: center;
+    margin-right:80px;
+}
+.right .profile-title .profile-left .image img{
+    border-radius:50%;
+    margin-right:15px;
+}
+.right .profile-title .profile-left .details .name{
+    padding-bottom:3px;
+}
+.right .profile-title .profile-right p{
+    color:blue;
+}
+.suggestion{
+    display: flex;
+    margin-top:25px;
+    margin-bottom:20px;
+}
+.suggestion p{
+    margin-right:150px;
+}
+.suggestion p:last-child{
+    margin-right:0;
+}
+.suggestion-title{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.suggestion-title .suggestion-left{
+    display: flex;
+    align-items: center;
+    margin-right:120px;
+}
+.suggestion-title .suggestion-left .image img{
+    border-radius: 50%;
+    margin-right:15px;
+}
+.suggestion-title .suggestion-left .details .name{
+    padding-bottom:3px;
+}
+.suggestion-title .suggestion-right p{
+    color:blue;
+}
+.suggestion .see{
+    color:blue;
+}
+.suggestion-title .suggestion-right p:hover{
+    color:black;
+}
+.suggestion .see:hover{
+    color:black;
+}
+
+
+    </style>
+    <div class="insta">
+        <header>
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" alt="here">
+            </div>
+            <div class="search">
+                <i class="fas fa-search"></i>
+                <input type="search" placeholder="Search">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i></a></li>
+                    <li><a href="#"><i class="fab fa-facebook-messenger"></i></a></li>
+                    <li><a href="#"><i class="far fa-plus-square"></i></a></li>
+                    <li><a href="#"><i class="far fa-compass"></i></a></li>
+                    <li><a href="#"><i class="far fa-heart"></i></a></li>
+                    <li><a href="#"><img src="me.jpg" alt="here"></a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section>
+            <div class="left">
+                <div class="story">
+                    <div class="stories">
+                        <a href="#"><img src="Pics/image1.png" width="60" height="60" alt="here"></a>
+                        <p>Sai Prakash</p>
+                    </div>
+                    <div class="stories">
+                        <a href="#"><img src="Pics/image2.png" width="60" height="60" alt="here"></a>
+                        <p>Om Prakash</p>
+                    </div>
+                    <div class="stories">
+                        <a href="#"><img src="Pics/image3.png" width="60" height="60" alt="here"></a>
+                        <p>Siva Reddy</p>
+                    </div>
+                    <div class="stories">
+                        <a href="#"><img src="Pics/image4.png" width="60" height="60" alt="here"></a>
+                        <p>Anasuyamma</p>
+                    </div>
+                    <div class="stories">
+                        <a href="#"><img src="Pics/image5.png" width="60" height="60" alt="here"></a>
+                        <p>Sai Deepak</p>
+                    </div>
+                    <div class="stories">
+                        <a href="#"><img src="Pics/image6.png" width="60" height="60" alt="here"></a>
+                        <p>Venkatesh</p>
+                    </div>
+                    <div class="stories">
+                        <a href="#"><img src="Pics/image7.png" width="60" height="60" alt="here"></a>
+                        <p>M.S Dhoni</p>
+                    </div>
+                    <div class="stories">
+                        <a href="#"><img src="Pics/image8.png" width="60" height="60" alt="here"></a>
+                        <p>Virat Kohli</p>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="post-title">
+                        <div class="post-left">
+                            <div class="image">
+                                <img src="https://th.bing.com/th/id/R.0c7c85712e611da0cabbea335d81d1ea?rik=eVewmLBVzx09Sg&riu=http%3a%2f%2f2.bp.blogspot.com%2f-ThSnqv-BjjE%2fUhBNTgM8eGI%2fAAAAAAAAoxw%2fnYE3yaKjY68%2fs1600%2fPrabhas%2bHD%2bWallpapers%2b1.jpg&ehk=FYBipbNJnIJpZQq9TAeg5MpS4DMLwYoV4pmX03eyKNw%3d&risl=&pid=ImgRaw&r=0" width="32" height="32" alt="here">
+                            </div>
+                            <div class="details">
+                                <p class="name">Prabhas</p>
+                                <p class="location">Hyderabad</p>
+                            </div>
+                        </div>
+                        <div class="post-right">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <img src="https://i2.cinestaan.com/image-bank/1500-1500/182001-183000/182108.jpg" height="400" width="600" alt="here">
+                    </div>
+                    <div class="post-footer">
+                        <div class="lsc">
+                            <i class="far fa-heart"></i>
+                            <i class="far fa-comment"></i>
+                            <i class="far fa-paper-plane"></i>
+                        </div>
+                        <div class="save">
+                            <i class="far fa-bookmark"></i>
+                        </div>
+                    </div>
+                    <div class="post-footer-content">
+                        <p class="likes">50 likes</p>
+                        <p class="name">Prabhas <span>Releasing on 28th September</span></p>
+                        <p class="comments">View all 300 comments</p>
+                        <p class="post-time">20 sec ago</p>
+                    </div>
+                    <div class="add-comment">
+                        <div class="left">
+                            <i class="far fa-smile-beam"></i>
+                            <input type="text" placeholder="Add Comment">
+                        </div>
+                        <div class="right">
+                            <p>Post</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="post-title">
+                        <div class="post-left">
+                            <div class="image">
+                                <img src="https://www.thefamousbirthdays.com/photo/2020/02/mahesh_babu_in_spyder_28cropped_29_671b7def_large.jpg" width="32" height="32" alt="here">
+                            </div>
+                            <div class="details">
+                                <p class="name">MBfans</p>
+                                <p class="location">Vizag</p>
+                            </div>
+                        </div>
+                        <div class="post-right">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <img src="https://www.thefamousbirthdays.com/photo/2020/02/mahesh_babu_in_spyder_28cropped_29_671b7def_large.jpg" height="400" width="600" alt="here">
+                    </div>
+                    <div class="post-footer">
+                        <div class="lsc">
+                            <i class="far fa-heart"></i>
+                            <i class="far fa-comment"></i>
+                            <i class="far fa-paper-plane"></i>
+                        </div>
+                        <div class="save">
+                            <i class="far fa-bookmark"></i>
+                        </div>
+                    </div>
+                    <div class="post-footer-content">
+                        <p class="likes">500 likes</p>
+                        <p class="name">MBfans <span>Superstar</span></p>
+                        <p class="comments">View all 30 comments</p>
+                        <p class="post-time">3 days ago</p>
+                    </div>
+                    <div class="add-comment">
+                        <div class="left">
+                            <i class="far fa-smile-beam"></i>
+                            <input type="text" placeholder="Add Comment">
+                        </div>
+                        <div class="right">
+                            <p>Post</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="post-title">
+                        <div class="post-left">
+                            <div class="image">
+                                <img src="https://www.hdwallpapers.in/download/ms_dhoni_icc_world_t20_12_hd_celebrities-1920x1080.jpg" width="32" height="32" alt="here">
+                            </div>
+                            <div class="details">
+                                <p class="name">Dhonifanpage</p>
+                                <p class="location">Chennai</p>
+                            </div>
+                        </div>
+                        <div class="post-right">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <img src="https://circleofcricket.com/post_image/post_image_400b0f2.jpg" height="400" width="600" alt="here">
+                    </div>
+                    <div class="post-footer">
+                        <div class="lsc">
+                            <i class="far fa-heart"></i>
+                            <i class="far fa-comment"></i>
+                            <i class="far fa-paper-plane"></i>
+                        </div>
+                        <div class="save">
+                            <i class="far fa-bookmark"></i>
+                        </div>
+                    </div>
+                    <div class="post-footer-content">
+                        <p class="likes">500 likes</p>
+                        <p class="name">Dhonifanpage <span>Thala dhoni</span></p>
+                        <p class="comments">View all 100 comments</p>
+                        <p class="post-time">20 hours ago</p>
+                    </div>
+                    <div class="add-comment">
+                        <div class="left">
+                            <i class="far fa-smile-beam"></i>
+                            <input type="text" placeholder="Add Comment">
+                        </div>
+                        <div class="right">
+                            <p>Post</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="post-title">
+                        <div class="post-left">
+                            <div class="image">
+                                <img src="https://wallpapercave.com/wp/wp5247636.jpg" width="32" height="32" alt="here">
+                            </div>
+                            <div class="details">
+                                <p class="name">Ntrfans</p>
+                                <p class="location">Anantapur</p>
+                            </div>
+                        </div>
+                        <div class="post-right">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <img src="https://i.ytimg.com/vi/uam0dNk9ses/maxresdefault.jpg" height="400" width="600" alt="here">
+                    </div>
+                    <div class="post-footer">
+                        <div class="lsc">
+                            <i class="far fa-heart"></i>
+                            <i class="far fa-comment"></i>
+                            <i class="far fa-paper-plane"></i>
+                        </div>
+                        <div class="save">
+                            <i class="far fa-bookmark"></i>
+                        </div>
+                    </div>
+                    <div class="post-footer-content">
+                        <p class="likes">200 likes</p>
+                        <p class="name">Ntrfans <span>Young Tiger</span></p>
+                        <p class="comments">View all 10 comments</p>
+                        <p class="post-time">2 hours ago</p>
+                    </div>
+                    <div class="add-comment">
+                        <div class="left">
+                            <i class="far fa-smile-beam"></i>
+                            <input type="text" placeholder="Add Comment">
+                        </div>
+                        <div class="right">
+                            <p>Post</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="post-title">
+                        <div class="post-left">
+                            <div class="image">
+                                <img src="https://th.bing.com/th/id/R.c186989c8abfe10b30e46543df7298e9?rik=hhhe1swK8ZMVog&riu=http%3a%2f%2fgodofindia.com%2fwp-content%2fuploads%2f2017%2f05%2fallu-arjun-24.jpg&ehk=rcrNoYSqZdDb2Cf%2bDJPuTOqz%2f6teO7dw%2b2VjWv8C2Ic%3d&risl=&pid=ImgRaw&r=0" width="32" height="32" alt="here">
+                            </div>
+                            <div class="details">
+                                <p class="name">AlluArjunfans</p>
+                                <p class="location">Chennai</p>
+                            </div>
+                        </div>
+                        <div class="post-right">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <img src="https://1.bp.blogspot.com/-I9FhLsNS6L8/UYDvpPtSqpI/AAAAAAAAh98/9h5HQePOQZI/s1600/Allu+Arjun+1.jpg" height="400" width="600" alt="here">
+                    </div>
+                    <div class="post-footer">
+                        <div class="lsc">
+                            <i class="far fa-heart"></i>
+                            <i class="far fa-comment"></i>
+                            <i class="far fa-paper-plane"></i>
+                        </div>
+                        <div class="save">
+                            <i class="far fa-bookmark"></i>
+                        </div>
+                    </div>
+                    <div class="post-footer-content">
+                        <p class="likes">250 likes</p>
+                        <p class="name">AlluArjunfans <span>Icon Star</span></p>
+                        <p class="comments">View all 10 comments</p>
+                        <p class="post-time">20 minutes ago</p>
+                    </div>
+                    <div class="add-comment">
+                        <div class="left">
+                            <i class="far fa-smile-beam"></i>
+                            <input type="text" placeholder="Add Comment">
+                        </div>
+                        <div class="right">
+                            <p>Post</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="post">
+                    <div class="post-title">
+                        <div class="post-left">
+                            <div class="image">
+                                <img src="https://th.bing.com/th/id/R.68a0fb0bec2aadf730ba9a3acf4d9d77?rik=DQVA3%2fIeZ1Sidg&riu=http%3a%2f%2flh6.ggpht.com%2f-D5YXXpd-o4s%2fU7mpSXcD9nI%2fAAAAAAAAKEM%2fKtCTrUALAxA%2fs1600%2f3.jpg&ehk=ll%2bjBuhxalN0%2bWNXtqj1EKfbHn7XPGgk3DvNqLLWzEQ%3d&risl=&pid=ImgRaw&r=0" width="32" height="32" alt="here">
+                            </div>
+                            <div class="details">
+                                <p class="name">Prabhasroyals</p>
+                                <p class="location">Hyderabad</p>
+                            </div>
+                        </div>
+                        <div class="post-right">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <img src="https://1.bp.blogspot.com/-reIWxIIoivg/YD8VcvPEKYI/AAAAAAAAr58/S9X3GPFmgMcxsAqlrLEQkbHe4YdhBX7JwCLcBGAsYHQ/w426-h640/Salaar%2BHD%2BUltra.jpg" height="400" width="600" alt="here">
+                    </div>
+                    <div class="post-footer">
+                        <div class="lsc">
+                            <i class="far fa-heart"></i>
+                            <i class="far fa-comment"></i>
+                            <i class="far fa-paper-plane"></i>
+                        </div>
+                        <div class="save">
+                            <i class="far fa-bookmark"></i>
+                        </div>
+                    </div>
+                    <div class="post-footer-content">
+                        <p class="likes">1200 likes</p>
+                        <p class="name">Prabhasroyals <span>Pan Indian Mega Star</span></p>
+                        <p class="comments">View all 10 comments</p>
+                        <p class="post-time">20 hours ago</p>
+                    </div>
+                    <div class="add-comment">
+                        <div class="left">
+                            <i class="far fa-smile-beam"></i>
+                            <input type="text" placeholder="Add Comment">
+                        </div>
+                        <div class="right">
+                            <p>Post</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="profile-title">
+                    <div class="profile-left">
+                        <div class="image">
+                            <img src="Pics/me.jpg" width="56" height="56" alt="here">
+                        </div>
+                        <div class="details">
+                            <p class="name">Sai Prakash Reddy</p>
+                            <p class="surname">Rayachoty</p>
+                        </div>
+                    </div>
+                    <div class="profile-right">
+                        <p>Switch</p>
+                    </div>
+                </div>
+                <div class="suggestion">
+                    <p>Suggestion for you</p>
+                    <p class="see">See All</p>
+                </div>
+                <div class="suggestion-title">
+                    <div class="suggestion-left">
+                        <div class="image">
+                            <img src="Pics/image9.png" width="32" height="32" alt="here">
+                        </div>
+                        <div class="details">
+                            <p class="name">Kingkong Sreenu</p>
+                            <p class="location">Kadapa</p>
+                        </div>
+                    </div>
+                    <div class="suggestion-right">
+                        <p>Follow</p>
+                    </div>
+                </div>
+                <div class="suggestion-title">
+                    <div class="suggestion-left">
+                        <div class="image">
+                            <img src="Pics/image10.png" width="32" height="32" alt="here">
+                        </div>
+                        <div class="details">
+                            <p class="name">Kingkong Prriyaa</p>
+                            <p class="location">Chittor</p>
+                        </div>
+                    </div>
+                    <div class="suggestion-right">
+                        <p>Follow</p>
+                    </div>
+                </div>
+                <div class="suggestion-title">
+                    <div class="suggestion-left">
+                        <div class="image">
+                            <img src="Pics/image11.png" width="32" height="32" alt="here">
+                        </div>
+                        <div class="details">
+                            <p class="name">RVVikramarkudu</p>
+                            <p class="location">Tirupati</p>
+                        </div>
+                    </div>
+                    <div class="suggestion-right">
+                        <p>Follow</p>
+                    </div>
+                </div>
+                <div class="suggestion-title">
+                    <div class="suggestion-left">
+                        <div class="image">
+                            <img src="Pics/image12.png" width="32" height="32" alt="here">
+                        </div>
+                        <div class="details">
+                            <p class="name">Kingkong Bashaj</p>
+                            <p class="location">Anantapur</p>
+                        </div>
+                    </div>
+                    <div class="suggestion-right">
+                        <p>Follow</p>
+                    </div>
+                </div>
+                <div class="suggestion-title">
+                    <div class="suggestion-left">
+                        <div class="image">
+                            <img src="Pics/image9.png" width="32" height="32" alt="here">
+                        </div>
+                        <div class="details">
+                            <p class="name">Kingkong bharat</p>
+                            <p class="location">Vijayawada</p>
+                        </div>
+                    </div>
+                    <div class="suggestion-right">
+                        <p>Follow</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+
